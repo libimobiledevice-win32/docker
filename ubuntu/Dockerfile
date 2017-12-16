@@ -25,25 +25,25 @@ WORKDIR /src/libplist
 RUN ./autogen.sh --without-cython --prefix=/usr \
 && make \
 && make install \
-&& DESTIR=/out make install
+&& DESTDIR=/out make install
 
 WORKDIR /src/libusbmuxd
 RUN ./autogen.sh --without-cython --prefix=/usr \
 && make \
 && make install \
-&& DESTIR=/out make install
+&& DESTDIR=/out make install
 
 WORKDIR /src/libimobiledevice
 RUN ./autogen.sh --without-cython --prefix=/usr \
 && make \
 && make install \
-&& DESTIR=/out make install
+&& DESTDIR=/out make install
 
 WORKDIR /src/usbmuxd
 RUN ./autogen.sh --prefix=/usr \
 && make \
 && make install \
-&& DESTIR=/out make install
+&& DESTDIR=/out make install
 
 FROM ubuntu:xenial
 
