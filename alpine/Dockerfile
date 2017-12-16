@@ -13,13 +13,13 @@ WORKDIR /src/libplist
 RUN ./autogen.sh --without-cython --prefix=/usr \
 && make \
 && make install \
-&& make install DESTDIR=/out \
+&& make install DESTDIR=/out
 
 WORKDIR /src/libusbmuxd
 RUN ./autogen.sh --without-cython --prefix=/usr \
 && make \
 && make install \
-&& make install DESTDIR=/out \
+&& make install DESTDIR=/out
 
 WORKDIR /src/libimobiledevice
 RUN ./autogen.sh --without-cython --prefix=/usr \
