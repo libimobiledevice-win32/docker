@@ -49,6 +49,11 @@ FROM ubuntu:xenial
 
 WORKDIR /
 
+RUN apt-get update \
+&& apt-get install -y libssl \
+# Delete all the apt list files since they're big and get stale quickly
+&& rm -rf /var/lib/apt/lists/*
+
 COPY --from=0 /out/usr/ /usr/
 
 # Start the server by default
