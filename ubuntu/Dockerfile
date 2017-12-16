@@ -50,7 +50,7 @@ FROM ubuntu:xenial
 WORKDIR /
 
 RUN apt-get update \
-&& apt-get install -y libssl \
+&& apt-get install -y openssl \
 # Delete all the apt list files since they're big and get stale quickly
 && rm -rf /var/lib/apt/lists/*
 
