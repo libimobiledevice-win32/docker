@@ -10,14 +10,10 @@ WORKDIR /src
 
 RUN wget https://github.com/libusb/libusb/archive/v1.0.21.tar.gz -O libusb-1.0.21.tar.gz \
 && tar xvf libusb-1.0.21.tar.gz \
-&& wget https://github.com/libimobiledevice-win32/libplist/archive/msvc-master.tar.gz -O libplist-msvc-master.tar.gz \
-&& tar xvf libplist-msvc-master.tar.gz \
-&& wget https://github.com/libimobiledevice-win32/libusbmuxd/archive/msvc-master.tar.gz -O libusbmuxd-msvc-master.tar.gz \
-&& tar xvf libusbmuxd-msvc-master.tar.gz \
-&& wget https://github.com/libimobiledevice-win32/libimobiledevice/archive/msvc-master.tar.gz -O libimobiledevice-msvc-master.tar.gz \
-&& tar xvf libimobiledevice-msvc-master.tar.gz \
-&& wget https://github.com/libimobiledevice-win32/usbmuxd/archive/master-msvc.tar.gz -O usbmuxd-master-msvc.tar.gz \
-&& tar xvf usbmuxd-master-msvc.tar.gz
+&& git clone https://github.com/libimobiledevice-win32/libplist \
+&& git clone https://github.com/libimobiledevice-win32/libusbmuxd \
+&& git clone https://github.com/libimobiledevice-win32/libimobiledevice \
+&& git clone https://github.com/libimobiledevice-win32/usbmuxd
 
 WORKDIR /src/libusb-1.0.21
 RUN ./autogen.sh enable_udev=no --prefix=/usr \
@@ -25,26 +21,26 @@ RUN ./autogen.sh enable_udev=no --prefix=/usr \
 && make install \
 && DESTDIR=/out make install
 
-WORKDIR /src/libplist-msvc-master
+WORKDIR /src/libplist
 RUN ./autogen.sh --without-cython --prefix=/usr \
 && make \
 && make install \
 && DESTIR=/out make install
 
-WORKDIR /src/libusbmuxd-msvc-master
+WORKDIR /src/libusbmuxd
 RUN ./autogen.sh --without-cython --prefix=/usr \
 && make \
 && make install \
 && DESTIR=/out make install
 
-WORKDIR /src/libimobiledevice-msvc-master
+WORKDIR /src/libimobiledevice
 RUN ./autogen.sh --without-cython --prefix=/usr \
 && make \
 && make install \
 && DESTIR=/out make install
 
-WORKDIR /src/usbmuxd-master-msvc
-RUN ./autogen.sh --without-cython --prefix=/usr \
+WORKDIR /src/usbmuxd
+RUN ./autogen.sh --prefix=/usr \
 && make \
 && make install \
 && DESTIR=/out make install
