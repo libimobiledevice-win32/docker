@@ -37,6 +37,8 @@ FROM alpine:3.6
 
 WORKDIR /
 
+RUN apk --no-cache add  libusb openssl
+
 COPY --from=0 /out/usr/ /usr/
 
 # Start the server by default
