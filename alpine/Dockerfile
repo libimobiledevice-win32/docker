@@ -3,7 +3,7 @@ FROM alpine:3.6
 # These version numbers match the version numbers of the imobiledevice-net NuGet package.
 # They are the main version numbers used by libimobiledevice-win32, and this version number
 # is consistent across the libplist, libusbmuxd, libimobiledevice and usbmuxd repositories.
-ARG LIBIMOBILEDEVICE_WIN32_VERSION=v1.2.60
+ARG LIBIMOBILEDEVICE_WIN32_VERSION=v1.2.67
 
 RUN apk --no-cache add  automake autoconf build-base libtool libusb-dev openssl-dev git
 
