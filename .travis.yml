@@ -21,6 +21,7 @@ before_install:
 script:
   - echo Packaging libimobiledevice version $LIBIMOBILEDEVICE_WIN32_VERSION for $DISTRIBUTION
   - docker --version
+  - docker run --rm --privileged multiarch/qemu-user-static:register
   - docker build --build-arg LIBIMOBILEDEVICE_WIN32_VERSION=$LIBIMOBILEDEVICE_WIN32_VERSION -t quamotion/usbmuxd:$LIBIMOBILEDEVICE_WIN32_VERSION-$DISTRIBUTION $DISTRIBUTION
 
 after_success:
