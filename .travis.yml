@@ -1,0 +1,24 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  global:
+    - LIBIMOBILEDEVICE_WIN32_VERSION=v1.2.72
+  matrix:
+    - DISTRIBUTION=bionic
+    - DISTRIBUTION=xenial
+    - DISTRIBUTION=alpine
+    - DISTRIBUTION=arm64v8
+
+before_install:
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y install docker-ce
+
+script:
+  - echo Packaging libimobiledevice version $LIBIMOBILEDEVICE_WIN32_VERSION for $DISTRIBUTION
+  - docker --version
+  - docker build --build-arg LIBIMOBILEDEVICE_WIN32_VERSION=$LIBIMOBILEDEVICE_WIN32_VERSION -t quamotion/usbmuxd:$LIBIMOBILEDEVICE_WIN32_VERSION-$DISTRIBUTION $DISTRIBUTION

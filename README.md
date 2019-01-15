@@ -1,4 +1,6 @@
 # docker
+[![Build Status](https://travis-ci.org/libimobiledevice-win32/docker.svg?branch=master)](https://travis-ci.org/libimobiledevice-win32/docker)
+
 This repository contains a Dockerfile for [usbmuxd](https://github.com/libimobiledevice-win32/usbmuxd). It allows you to run usbmuxd in a Docker container.
 
 The docker container is available as [quamotion/usbmuxd on Docker Hub](https://hub.docker.com/r/quamotion/usbmuxd).
