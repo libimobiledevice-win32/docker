@@ -21,3 +21,7 @@ script:
   - echo Packaging libimobiledevice version $LIBIMOBILEDEVICE_WIN32_VERSION for $DISTRIBUTION
   - docker --version
   - docker build --build-arg LIBIMOBILEDEVICE_WIN32_VERSION=$LIBIMOBILEDEVICE_WIN32_VERSION -t quamotion/usbmuxd:$LIBIMOBILEDEVICE_WIN32_VERSION-$DISTRIBUTION $DISTRIBUTION
+
+after_success:
+  - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+  - docker push quamotion/usbmuxd:$LIBIMOBILEDEVICE_WIN32_VERSION-$DISTRIBUTION
