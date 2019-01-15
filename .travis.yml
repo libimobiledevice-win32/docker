@@ -10,6 +10,7 @@ env:
     - DISTRIBUTION=bionic
     - DISTRIBUTION=xenial
     - DISTRIBUTION=alpine
+    - DISTRIBUTION=bionic-arm64
 
 before_install:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
